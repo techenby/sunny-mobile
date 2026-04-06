@@ -14,4 +14,8 @@ Route::middleware(['guest'])
 Route::middleware(['auth', 'verified'])
     ->group(function (): void {
         Route::livewire('dashboard', 'pages::dashboard')->name('dashboard');
+
+        Route::livewire('inventory.index', 'pages::inventory.index')->name('inventory.index');
+
+        Route::livewire('recipes.index', 'pages::recipes.index')->name('recipes.index');
     });

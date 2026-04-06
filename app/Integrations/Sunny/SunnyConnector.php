@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Integrations\Sunny;
 
 use App\Integrations\Sunny\Requests\CreateAccessToken;
@@ -23,7 +25,7 @@ class SunnyConnector extends Connector
 
     public function boot(PendingRequest $pendingRequest): void
     {
-        if ($pendingRequest->getRequest() instanceof CreateAccessToken) {
+        if ($pendingRequest->getRequest() instanceof CreateAccessToken || $this->token === null) {
             return;
         }
 

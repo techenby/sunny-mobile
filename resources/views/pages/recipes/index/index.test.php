@@ -7,10 +7,10 @@ test('renders successfully', function (): void {
     $user = User::factory()->create();
 
     $this->actingAs($user)
-        ->get(route('dashboard'))
+        ->get(route('recipes.index'))
         ->assertOk();
 
     Livewire::actingAs($user)
-        ->test('pages::dashboard')
+        ->test('pages::recipes.index')
         ->assertOk();
 })->group('smoke');

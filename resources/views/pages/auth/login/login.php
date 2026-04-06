@@ -23,14 +23,11 @@ new #[Layout('layouts::guest')] #[Title('Log in')] class extends Component
         $userData = (new SunnyConnector)
             ->send(new CreateAccessToken([
                 ...$data,
-                "device_name" => "tinkerwell",
+                'device_name' => 'tinkerwell',
             ]))
             ->json();
 
-        $user = User::firstOrCreate(
-            ['id' => $userData['id']],
-            $userData
-        );
+        $user = User::query()->firstOrCreate(['id' => $userData['id']], $userData);
 
         Auth::login($user);
 
