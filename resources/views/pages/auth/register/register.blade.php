@@ -2,7 +2,7 @@
     <form wire:submit="register" class="flex flex-col gap-6">
         <!-- Name -->
         <flux:input
-            name="name"
+            wire:model="name"
             :label="__('Name')"
             :value="old('name')"
             type="text"
@@ -13,7 +13,7 @@
         />
 
         <flux:input
-            name="email"
+            wire:model="email"
             :label="__('Email address')"
             :value="old('email')"
             type="email"
@@ -23,7 +23,7 @@
         />
 
         <flux:input
-            name="password"
+            wire:model="password"
             :label="__('Password')"
             type="password"
             required
@@ -33,7 +33,7 @@
         />
 
         <flux:input
-            name="password_confirmation"
+            wire:model="password_confirmation"
             :label="__('Confirm password')"
             type="password"
             required

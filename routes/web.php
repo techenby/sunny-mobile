@@ -7,3 +7,8 @@ Route::livewire('/', 'pages::splash')->name('splash');
 
 Route::livewire('/login', 'pages::auth.login')->name('login');
 Route::livewire('/register', 'pages::auth.register')->name('register');
+
+Route::middleware(['auth', 'verified'])
+    ->group(function (): void {
+        Route::livewire('/dashboard', 'pages::dashboard')->name('dashboard');
+    });
