@@ -2,7 +2,7 @@
 
 use Livewire\Livewire;
 
-test('component renders successfully', function () {
+test('component renders successfully', function (): void {
     $this->get(route('splash'))
         ->assertOk();
 
