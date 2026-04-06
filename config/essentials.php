@@ -177,6 +177,6 @@ return [
     |
     */
 
-    Unguard::class => false,
+    Unguard::class => true,
 
 ];

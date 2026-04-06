@@ -2,7 +2,7 @@
 
 use Livewire\Livewire;
 
-test('component renders successfully', function () {
+test('renders successfully', function () {
     $this->get(route('register'))
         ->assertOk();
 

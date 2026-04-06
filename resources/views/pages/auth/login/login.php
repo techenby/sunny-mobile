@@ -1,5 +1,9 @@
 <?php
 
+use App\Integrations\Sunny\Requests\CreateAccessToken;
+use App\Integrations\Sunny\SunnyConnector;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,12 +15,24 @@ new #[Layout('layouts::guest')] #[Title('Log in')] class extends Component
 
     public function login()
     {
-        $this->validate([
+        $data = $this->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // todo, integrate with sanctum
+        $userData = (new SunnyConnector)
+            ->send(new CreateAccessToken([
+                ...$data,
+                "device_name" => "tinkerwell",
+            ]))
+            ->json();
+
+        $user = User::firstOrCreate(
+            ['id' => $userData['id']],
+            $userData
+        );
+
+        Auth::login($user);
 
         return redirect()->intended('dashboard');
     }

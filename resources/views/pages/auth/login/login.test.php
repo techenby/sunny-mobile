@@ -3,7 +3,7 @@
 use App\Models\User;
 use Livewire\Livewire;
 
-test('component renders successfully', function () {
+test('renders successfully', function () {
     $this->get(route('login'))
         ->assertOk();
 

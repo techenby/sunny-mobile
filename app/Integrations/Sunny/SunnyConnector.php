@@ -2,7 +2,7 @@
 
 namespace App\Integrations\Sunny;
 
-use App\Integrations\Sunny\Requests\GetAccessTokenRequest;
+use App\Integrations\Sunny\Requests\CreateAccessToken;
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\PendingRequest;
@@ -23,7 +23,7 @@ class SunnyConnector extends Connector
 
     public function boot(PendingRequest $pendingRequest): void
     {
-        if ($pendingRequest->getRequest() instanceof GetAccessTokenRequest) {
+        if ($pendingRequest->getRequest() instanceof CreateAccessToken) {
             return;
         }
 
