@@ -2,7 +2,10 @@
 
 use Livewire\Livewire;
 
-it('renders successfully', function (): void {
+test('component renders successfully', function () {
+    $this->get(route('splash'))
+        ->assertOk();
+
     Livewire::test('pages::splash')
-        ->assertStatus(200);
-});
+        ->assertOk();
+})->group('smoke');
