@@ -37,4 +37,7 @@ return [
         ],
     ],
 
+    'sunny' => [
+        'url' => env('SUNNY_URL'),
+    ],
 ];
