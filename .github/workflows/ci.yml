@@ -16,7 +16,12 @@ jobs:
     uses: ./.github/workflows/duster-fix-blame.yml
     secrets: inherit
 
-  tests:
+  phpstan:
     needs: duster
+    uses: ./.github/workflows/phpstan.yml
+    secrets: inherit
+
+  tests:
+    needs: phpstan
     uses: ./.github/workflows/tests.yml
     secrets: inherit
