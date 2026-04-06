@@ -8,6 +8,7 @@
             {{ $slot }}
         </main>
 
+        @livewireScripts
         @fluxScripts
     </body>
 </html>
