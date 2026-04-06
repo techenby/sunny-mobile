@@ -1,12 +1,12 @@
 # Sunny - Mobile
 
-**PHP:** 8.4
-**Laravel:** 13
-**Node:** 22
-**Asset Compiler:** Vite
-**Database:** SQLite
-**Frontend:** [Livewire v4](https://livewire.laravel.com/docs/quickstart)
-**Testing:** [Pest v4](https://pestphp.com/docs/installation)
+**PHP:** 8.4<br>
+**Laravel:** 13<br>
+**Node:** 22<br>
+**Asset Compiler:** Vite<br>
+**Database:** SQLite<br>
+**Frontend:** [Livewire v4](https://livewire.laravel.com/docs/quickstart)<br>
+**Testing:** [Pest v4](https://pestphp.com/docs/installation)<br>
 **Notable Packages:**
 - [driftingly/rector-laravel](https://github.com/driftingly/rector-laravel)
 - [livewire/flux-pro](https://fluxui.dev/)
