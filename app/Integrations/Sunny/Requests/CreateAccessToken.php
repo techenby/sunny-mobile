@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-class GetAccessTokenRequest extends Request implements HasBody
+class CreateAccessToken extends Request implements HasBody
 {
     use HasJsonBody;
 
