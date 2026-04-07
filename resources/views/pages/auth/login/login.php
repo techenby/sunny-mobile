@@ -3,7 +3,6 @@
 use App\Integrations\Sunny\Requests\CreateAccessToken;
 use App\Integrations\Sunny\SunnyConnector;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -14,16 +13,18 @@ new #[Layout('layouts::guest')] #[Title('Log in')] class extends Component
     public string $email;
     public string $password;
 
-    public function login(): RedirectResponse
+    public function login(): void
     {
-        $data = $this->validate([
+        $this->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
+        /** @var array{id: int, email: string, name: string} $userData */
         $userData = (new SunnyConnector)
             ->send(new CreateAccessToken([
-                ...$data,
+                'email' => $this->email,
+                'password' => $this->password,
                 'device_name' => 'tinkerwell',
             ]))
             ->json();
@@ -32,6 +33,6 @@ new #[Layout('layouts::guest')] #[Title('Log in')] class extends Component
 
         Auth::login($user);
 
-        return redirect()->intended('dashboard');
+        $this->redirectIntended(route('dashboard'));
     }
 };
