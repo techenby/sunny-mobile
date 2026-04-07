@@ -11,11 +11,19 @@ parameters:
         - config
         - database
         - public
+        - resources/views
         - routes
 
+    excludePaths:
+        - resources/views/*.blade.php
+        - resources/views/*.test.php
 
     level: max
 
     tmpDir: /tmp/phpstan
 
-    ignoreErrors: []
+    ignoreErrors:
+        -
+            identifier: expr.resultUnused
+            path: resources/views/pages/*
+            reportUnmatched: false
