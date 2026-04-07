@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\RedirectResponse;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,7 +12,7 @@ new #[Layout('layouts::guest')] #[Title('Register')] class extends Component
     public string $password;
     public string $password_confirmation;
 
-    public function register()
+    public function register(): RedirectResponse
     {
         $this->validate([
             'name' => 'required|string',
