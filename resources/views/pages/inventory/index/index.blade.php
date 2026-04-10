@@ -4,10 +4,10 @@
     <flux:input wire:model.live="search" placeholder="Search inventory..." icon="magnifying-glass" />
 
     @foreach ($this->items->groupBy(fn ($item) => $item->type->value) as $type => $items)
-    <div>
-        <div class="flex items-center gap-2 mb-2">
+    <div class="space-y-2">
+        <div class="flex items-center gap-2">
             <flux:heading size="sm" class="uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{{ Str::plural($type) }}</flux:heading>
-            <flux:badge size="sm" variant="pill">{{ $items->count() }}</flux:badge>
+            <flux:badge size="sm" variant="pill" class="tabular-nums">{{ $items->count() }}</flux:badge>
         </div>
         <div class="divide-y divide-zinc-950/5 dark:divide-white/10 rounded-xl border border-zinc-950/5 dark:border-white/10">
             @foreach ($items as $item)
