@@ -23,8 +23,6 @@ class SyncData implements ShouldQueue
     {
         $response = (new SunnyConnector($this->user->token))->send(new Sync)->dto();
 
-        // dd($response);
-
         Team::query()->upsert(
             $response['teams'],
             uniqueBy: ['id'],
