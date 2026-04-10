@@ -26,4 +26,10 @@ new #[Title('View Item')] class extends Component
 
         return $breadcrumbs;
     }
+
+    #[Computed]
+    public function children(): Collection
+    {
+        return $this->item->children()->orderBy('name')->get();
+    }
 };
