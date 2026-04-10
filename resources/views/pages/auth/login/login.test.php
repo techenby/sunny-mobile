@@ -1,7 +1,9 @@
 <?php
 
 use App\Integrations\Sunny\Requests\CreateAccessToken;
+use App\Jobs\SyncData;
 use App\Models\User;
+use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
@@ -15,6 +17,8 @@ test('renders successfully', function (): void {
 })->group('smoke');
 
 test('users can authenticate using the login screen', function (): void {
+    Queue::fake();
+
     Saloon::fake([
         CreateAccessToken::class => MockResponse::make([
             'id' => 1,
@@ -38,12 +42,13 @@ test('users can authenticate using the login screen', function (): void {
         'id' => 1,
         'name' => 'Monkey D. Luffy',
         'email' => 'luffy@strawhat.pirates',
-        'token' => '1|abcdefghijklmnopqrstuvwxyz',
     ]);
+
+    Queue::assertPushed(SyncData::class);
 });
 
 test('users can not authenticate with invalid password', function (): void {
-    $user = User::factory()->create();
+    User::factory()->create();
 
     Livewire::test('pages::auth.login')
         ->call('login')

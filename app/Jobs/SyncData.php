@@ -12,6 +12,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Native\Mobile\Facades\SecureStorage;
 
 class SyncData implements ShouldQueue
 {
@@ -21,7 +22,9 @@ class SyncData implements ShouldQueue
 
     public function handle(): void
     {
-        $response = (new SunnyConnector($this->user->token))->send(new Sync)->dto();
+        $token = SecureStorage::get('token');
+
+        $response = (new SunnyConnector($token))->send(new Sync)->dto();
 
         Team::query()->upsert(
             $response['teams'],
