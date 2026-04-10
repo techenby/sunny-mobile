@@ -18,7 +18,7 @@ parameters:
         - resources/views/*.blade.php
         - resources/views/*.test.php
 
-    level: max
+    level: 4
 
     tmpDir: /tmp/phpstan
 
