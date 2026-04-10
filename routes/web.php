@@ -1,9 +1,26 @@
 <?php
 
 declare(strict_types=1);
-use Illuminate\Support\Facades\Route;
 
-Route::livewire('/', 'pages::splash')->name('splash');
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Native\Mobile\Facades\SecureStorage;
+
+Route::get('/', function () {
+    $token = SecureStorage::get('token');
+    $userId = SecureStorage::get('user_id');
+
+    if ($token && $userId && $user = User::query()->find($userId)) {
+        Auth::login($user);
+
+        return to_route('dashboard');
+    }
+
+    return to_route('splash');
+});
+
+Route::livewire('splash', 'pages::splash')->name('splash');
 
 Route::middleware(['guest'])
     ->group(function (): void {

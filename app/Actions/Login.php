@@ -18,7 +18,7 @@ class Login
     public function handle(string $email, string $password): void
     {
         DB::transaction(function () use ($email, $password): void {
-            /** @var array{id: int, email: string, name: string} $userData */
+            /** @var array{id: int, email: string, name: string, token: string} $userData */
             $userData = (new SunnyConnector)
                 ->send(new CreateAccessToken([
                     'email' => $email,
@@ -35,7 +35,7 @@ class Login
             SecureStorage::set('token', $userData['token']);
             SecureStorage::set('user_id', $user->id);
 
-            SyncData::dispatch($user);
+            dispatch(new SyncData($user));
 
             Auth::login($user);
         });
