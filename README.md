@@ -15,6 +15,7 @@ A companion mobile app for [techenby/sunny](https://github.com/techenby/sunny) b
 - [larastan/larastan](https://github.com/larastan/larastan)
 - [livewire/flux-pro](https://fluxui.dev/)
 - [nativephp/mobile-air](https://nativephp.com/docs/mobile/3/getting-started/installation)
+- [nativephp/mobile-secure-storage](https://nativephp.com/plugins/nativephp/mobile-secure-storage)
 - [nunomaduro/essentials](https://github.com/nunomaduro/essentials)
 
 ## Getting Started
