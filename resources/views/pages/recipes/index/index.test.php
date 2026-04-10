@@ -19,7 +19,7 @@ test('renders successfully', function (): void {
         ->assertSee('Chocolate Chip Cookies');
 })->group('smoke');
 
-test('can search items', function () {
+test('can search items', function (): void {
     $user = User::factory()->create();
     Recipe::factory()->for($user->currentTeam)
         ->count(2)

@@ -1,16 +1,15 @@
 <?php
 
 use App\Jobs\SyncData;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Native\Mobile\Facades\SecureStorage;
 
-new #[Title('Dashboard')] class extends Component {
+new #[Title('Dashboard')] class extends Component
+{
     #[Computed]
-    public function stats()
+    public function stats(): array
     {
         return [
             'recipes' => Auth::user()->currentTeam?->recipes()->count() ?? 0,
@@ -18,7 +17,7 @@ new #[Title('Dashboard')] class extends Component {
         ];
     }
 
-    public function sync()
+    public function sync(): void
     {
         dispatch(new SyncData(Auth::user()));
     }

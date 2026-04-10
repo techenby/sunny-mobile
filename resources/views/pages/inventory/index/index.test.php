@@ -19,7 +19,7 @@ test('renders successfully', function (): void {
         ->assertSee('Rocking Chair');
 })->group('smoke');
 
-test('can search items', function () {
+test('can search items', function (): void {
     $user = User::factory()->create();
     Item::factory()->for($user->currentTeam)
         ->count(2)
