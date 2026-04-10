@@ -1,9 +1,4 @@
 <div class="space-y-6 p-2">
-    <div class="flex items-center gap-4">
-        <flux:button :href="route('recipes.index')" icon="arrow-left" />
-        <flux:heading size="xl" class="text-balance">{{ $recipe->name }}</flux:heading>
-    </div>
-
     @if ($recipe->photo_path)
         <img src="{{ Storage::temporaryUrl($recipe->photo_path, now()->addMinutes(30)) }}" alt="{{ $recipe->name }}" class="w-full rounded-lg object-cover max-h-96" />
     @endif

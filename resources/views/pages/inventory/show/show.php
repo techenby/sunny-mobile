@@ -4,12 +4,17 @@ use App\Models\Item;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('View Item')] class extends Component
+new class extends Component
 {
     public Item $item;
+
+    public function render()
+    {
+        return $this->view()
+            ->title($this->item->name);
+    }
 
     #[Computed]
     public function breadcrumbs(): Collection

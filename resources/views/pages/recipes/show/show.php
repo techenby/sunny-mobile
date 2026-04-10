@@ -1,10 +1,15 @@
 <?php
 
 use App\Models\Recipe;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('View Recipe')] class extends Component
+new class extends Component
 {
     public Recipe $recipe;
+
+    public function render()
+    {
+        return $this->view()
+            ->title($this->recipe->name);
+    }
 };

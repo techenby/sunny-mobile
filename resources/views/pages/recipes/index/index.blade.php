@@ -1,4 +1,4 @@
-<div class="p-4 space-y-4">
+<div class="p-2 space-y-6">
     <flux:input wire:model.live="search" placeholder="Search recipes..." icon="magnifying-glass" />
 
     <div class="divide-y divide-zinc-950/5 dark:divide-white/10 rounded-xl border border-zinc-950/5 dark:border-white/10">

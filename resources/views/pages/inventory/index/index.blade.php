@@ -1,4 +1,4 @@
-<div class="p-4 space-y-4">
+<div class="p-2 space-y-6">
     <flux:input wire:model.live="search" placeholder="Search inventory..." icon="magnifying-glass" />
 
     @foreach ($this->items->groupBy(fn ($item) => $item->type->value) as $type => $items)
