@@ -6,12 +6,16 @@ namespace App\Models;
 
 use App\Enums\TeamRole;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
+/** @property TeamRole $role */
 #[Fillable(['team_id', 'user_id', 'role'])]
 class Membership extends Pivot
 {
+    use HasFactory;
+
     /** @var bool */
     public $incrementing = true;
 
