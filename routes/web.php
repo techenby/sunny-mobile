@@ -15,7 +15,9 @@ Route::middleware(['auth', 'verified'])
     ->group(function (): void {
         Route::livewire('dashboard', 'pages::dashboard')->name('dashboard');
 
-        Route::livewire('inventory.index', 'pages::inventory.index')->name('inventory.index');
+        Route::livewire('inventory', 'pages::inventory.index')->name('inventory.index');
+        Route::livewire('inventory/{item}', 'pages::inventory.show')->name('inventory.show');
 
-        Route::livewire('recipes.index', 'pages::recipes.index')->name('recipes.index');
+        Route::livewire('recipes', 'pages::recipes.index')->name('recipes.index');
+        Route::livewire('recipes/{recipe}', 'pages::recipes.show')->name('recipes.show');
     });
