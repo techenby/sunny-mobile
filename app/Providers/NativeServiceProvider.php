@@ -32,6 +32,8 @@ class NativeServiceProvider extends ServiceProvider
     {
         return [
             \Native\Mobile\Providers\SecureStorageServiceProvider::class,
+            \Native\Mobile\Providers\DeviceServiceProvider::class,
+        
         
         ];
     }

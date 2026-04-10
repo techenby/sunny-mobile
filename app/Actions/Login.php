@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Native\Mobile\Facades\Device;
 use Native\Mobile\Facades\SecureStorage;
 
 class Login
@@ -23,7 +24,7 @@ class Login
                 ->send(new CreateAccessToken([
                     'email' => $email,
                     'password' => $password,
-                    'device_name' => 'tinkerwell',
+                    'device_name' => Device::getId(),
                 ]))
                 ->json();
 

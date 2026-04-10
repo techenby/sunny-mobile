@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c8766b9a2bca02f43905b1a85295cfa",
+    "content-hash": "4057ead029e21f5638e53984903d60a6",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2773,6 +2773,51 @@
                 "source": "https://github.com/NativePHP/mobile-air/tree/jumpdate"
             },
             "time": "2026-04-10T19:57:11+00:00"
+        },
+        {
+            "name": "nativephp/mobile-device",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NativePHP/mobile-device.git",
+                "reference": "91f569fdc903961f06776e865b856369660de4c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NativePHP/mobile-device/zipball/91f569fdc903961f06776e865b856369660de4c6",
+                "reference": "91f569fdc903961f06776e865b856369660de4c6",
+                "shasum": ""
+            },
+            "require": {
+                "nativephp/mobile": "*",
+                "php": "^8.2"
+            },
+            "type": "nativephp-plugin",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Native\\Mobile\\Providers\\DeviceServiceProvider"
+                    ]
+                },
+                "nativephp": {
+                    "manifest": "nativephp.json"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Native\\Mobile\\Providers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Device hardware operations for NativePHP Mobile",
+            "support": {
+                "issues": "https://github.com/NativePHP/mobile-device/issues",
+                "source": "https://github.com/NativePHP/mobile-device/tree/1.0.1"
+            },
+            "time": "2026-03-12T22:12:09+00:00"
         },
         {
             "name": "nativephp/mobile-secure-storage",
