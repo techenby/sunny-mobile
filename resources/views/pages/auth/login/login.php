@@ -3,6 +3,7 @@
 use App\Integrations\Sunny\Requests\CreateAccessToken;
 use App\Integrations\Sunny\SunnyConnector;
 use App\Models\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -29,7 +30,10 @@ new #[Layout('layouts::guest')] #[Title('Log in')] class extends Component
             ]))
             ->json();
 
-        $user = User::query()->firstOrCreate(['id' => $userData['id']], $userData);
+        $user = User::query()->updateOrCreate(
+            ['id' => $userData['id']],
+            Arr::only($userData, ['id', 'name', 'email', 'token', 'current_team_id']),
+        );
 
         Auth::login($user);
 
