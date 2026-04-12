@@ -8,33 +8,33 @@
 
         </native:top-bar>
 
-        <native:side-nav gestures-enabled="true">
-            <native:side-nav-item
+        <main class="nativephp-safe-area">
+            {{ $slot }}
+        </main>
+
+        <native:bottom-nav gestures-enabled="true">
+            <native:bottom-nav-item
                 id="dashboard"
                 label="Dashboard"
                 icon="home"
                 :url="route('dashboard')"
                 :active="request()->routeIs('dashboard')"
             />
-            <native:side-nav-item
+            <native:bottom-nav-item
                 id="inventory"
                 label="Inventory"
                 icon="folder"
                 :url="route('inventory.index')"
                 :active="request()->routeIs('inventory.*')"
             />
-            <native:side-nav-item
+            <native:bottom-nav-item
                 id="recipes"
                 label="Recipes"
                 icon="book-open"
                 :url="route('recipes.index')"
                 :active="request()->routeIs('recipes.*')"
             />
-        </native:side-nav>
-
-        <main class="nativephp-safe-area">
-            {{ $slot }}
-        </main>
+        </native:bottom-nav>
 
         @fluxScripts
     </body>
