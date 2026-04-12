@@ -14,18 +14,21 @@
                 label="Dashboard"
                 icon="home"
                 :url="route('dashboard')"
+                :active="request()->routeIs('dashboard')"
             />
             <native:side-nav-item
                 id="inventory"
                 label="Inventory"
                 icon="folder"
                 :url="route('inventory.index')"
+                :active="request()->routeIs('inventory.*')"
             />
             <native:side-nav-item
                 id="recipes"
                 label="Recipes"
                 icon="book-open"
                 :url="route('recipes.index')"
+                :active="request()->routeIs('recipes.*')"
             />
         </native:side-nav>
 
