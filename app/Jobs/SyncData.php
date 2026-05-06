@@ -12,7 +12,9 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Auth;
 use Native\Mobile\Facades\SecureStorage;
+use Saloon\Exceptions\Request\Statuses\UnauthorizedException;
 
 class SyncData implements ShouldQueue
 {
@@ -22,9 +24,18 @@ class SyncData implements ShouldQueue
 
     public function handle(): void
     {
-        $token = SecureStorage::get('token');
+        try {
+            $token = SecureStorage::get('token');
 
-        $response = (new SunnyConnector($token))->send(new Sync)->dto();
+            $response = (new SunnyConnector($token))->send(new Sync)->dto();
+        } catch (UnauthorizedException $e) {
+            SecureStorage::delete('token');
+            SecureStorage::delete('user_id');
+
+            Auth::logout();
+
+            $this->redirectRoute('login');
+        }
 
         Team::query()->upsert(
             $response['teams'],

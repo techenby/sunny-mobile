@@ -4,13 +4,8 @@
         @include('layouts.partials.head')
     </head>
     <body class="min-h-screen">
-        <native:top-bar :title="$title">
 
-        </native:top-bar>
-
-        <main class="nativephp-safe-area">
-            {{ $slot }}
-        </main>
+        {{ $slot }}
 
         <native:bottom-nav gestures-enabled="true">
             <native:bottom-nav-item
