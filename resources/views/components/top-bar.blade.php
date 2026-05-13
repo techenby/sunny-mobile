@@ -7,6 +7,11 @@
         @endif
 
         <flux:heading level="1" size="xl">{{ $title }}</flux:heading>
+
+        @isset($actions)
+            <flux:spacer />
+            {{ $actions }}
+        @endisset
     </div>
 
     {{ $slot }}

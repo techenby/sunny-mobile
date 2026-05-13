@@ -15,15 +15,15 @@ class StoreItem extends Request implements HasBody
 
     protected Method $method = Method::POST;
 
-    /** @param array{name: string, type: string, parent_id: int, metadata: array<string, string>, photo: string} $payload */
-    public function __construct(protected int $id, protected array $payload) {}
+    /** @param array{name: string, type: string, parent_id: ?int, metadata: ?array<string, string>} $payload */
+    public function __construct(protected array $payload) {}
 
     public function resolveEndpoint(): string
     {
-        return '/items/' . $this->id;
+        return '/items';
     }
 
-    /** @return array<string, array<string, string>|int|string> */
+    /** @return array<string, mixed> */
     protected function defaultBody(): array
     {
         return $this->payload;

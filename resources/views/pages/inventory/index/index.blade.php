@@ -1,7 +1,10 @@
 <div>
     <x-top-bar :title="__('Inventory')">
-        <flux:input wire:model.live="search" placeholder="Search inventory..." icon="magnifying-glass" />
+        <x-slot name="actions">
+            <flux:button :href="route('inventory.create')" icon="plus" variant="primary" />
+        </x-slot>
 
+        <flux:input wire:model.live="search" placeholder="Search inventory..." icon="magnifying-glass" />
     </x-top-bar>
 
     <main class="p-4 space-y-6">

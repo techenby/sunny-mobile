@@ -19,6 +19,15 @@ test('renders successfully', function (): void {
         ->assertSee('Rocking Chair');
 })->group('smoke');
 
+test('links to create page', function (): void {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('inventory.index'))
+        ->assertOk()
+        ->assertSee(route('inventory.create'), escape: false);
+});
+
 test('can search items', function (): void {
     $user = User::factory()->create();
     Item::factory()->for($user->currentTeam)

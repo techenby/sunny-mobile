@@ -33,8 +33,8 @@ Route::middleware(['auth', 'verified'])
         Route::livewire('dashboard', 'pages::dashboard')->name('dashboard');
 
         Route::livewire('inventory', 'pages::inventory.index')->name('inventory.index');
-        Route::livewire('inventory/{item}', 'pages::inventory.show')->name('inventory.show');
         Route::livewire('inventory/create', 'pages::inventory.create')->name('inventory.create');
+        Route::livewire('inventory/{item}', 'pages::inventory.show')->name('inventory.show');
 
         Route::livewire('recipes', 'pages::recipes.index')->name('recipes.index');
         Route::livewire('recipes/{recipe}', 'pages::recipes.show')->name('recipes.show');
