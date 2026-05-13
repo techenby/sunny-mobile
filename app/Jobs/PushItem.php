@@ -28,8 +28,6 @@ class PushItem implements ShouldQueue
             'metadata' => $this->item->metadata,
         ]));
 
-        dd($response);
-
         $serverId = (int) ($response->json('data.id') ?? $response->json('id'));
 
         if ($serverId === 0 || $serverId === $this->item->id) {

@@ -28,7 +28,7 @@ class SyncData implements ShouldQueue
             $token = SecureStorage::get('token');
 
             $response = (new SunnyConnector($token))->send(new Sync)->dto();
-        } catch (UnauthorizedException $e) {
+        } catch (UnauthorizedException) {
             SecureStorage::delete('token');
             SecureStorage::delete('user_id');
 

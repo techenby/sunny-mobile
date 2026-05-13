@@ -1,14 +1,10 @@
 <?php
 
-use App\Integrations\Sunny\Requests\Sync;
-use App\Integrations\Sunny\SunnyConnector;
 use App\Jobs\SyncData;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Native\Mobile\Facades\SecureStorage;
-use Saloon\Exceptions\Request\Statuses\UnauthorizedException;
 
 new #[Title('Dashboard')] class extends Component
 {
